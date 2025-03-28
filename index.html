@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Landing Page</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar {
+            background-color: black;
+            padding: 10px 20px;
+        }
+
+        .navbar-brand {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 16px;
+            margin-right: 15px;
+            transition: 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            text-decoration: underline;
+        }
+
+
+        .navbar-toggler {
+            border: none;
+            background: white;
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+
+
+        .sec_1 {
+            background: url('./assets/bg.png') no-repeat center center/cover;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            overflow: hidden;
+
+        }
+
+
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.7);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge-custom {
+            background: #14d964;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+
+
+        .cardio-title {
+            font-size: 9rem;
+            font-weight: bold;
+            line-height: 1;
+            border-radius: 10px red;
+        }
+
+        .btn-custom {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .btn-green {
+            background: #14d964;
+            color: black;
+        }
+
+        .btn-dark {
+            background: black;
+            color: white;
+        }
+
+        .info-box {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .info-box span {
+            font-size: 24px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .exercise-section {
+            padding: 60px 0;
+            background: black;
+            width: 100%;
+        }
+
+        .exercise-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .exercise-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .exercise-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .yellow {
+            color: yellow;
+        }
+
+        #gym {
+            justify-content: space-between;
+        }
+
+        .sec_2 {
+            background-color: black;
+            padding: 3rem;
+        }
+
+
+        .hero-section {
+            background-color: rgb(61, 60, 60);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            font-weight: bold;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-content {
+            background-image: url(./assets/patch.png);
+            background-repeat: no-repeat;
+            background-position: bottom left;
+            background-size: contain;
+            width: 300px;
+            padding-top: 3rem;
+        }
+
+        .highlight {
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: url('images/yellow-bg.png') no-repeat center;
+            background-size: contain;
+        }
+
+        .hero-text {
+            font-size: 1.1rem;
+            max-width: 400px;
+            margin-top: 10px;
+        }
+
+        .btn-custom {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .btn-custom:hover {
+            background-color: #218838;
+        }
+
+
+        .trainer-section {
+            background-color: black;
+        }
+
+        .trainer-card {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .trainer-card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .trainer-info {
+            background-color: black;
+            color: white;
+            padding: 15px 10px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .trainer-name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .trainer-role {
+            font-size: 14px;
+            color: #bdbdbd;
+        }
+
+
+        .sec_5 {
+            width: 100%;
+            margin: auto;
+            /* padding: 40px 20px; */
+        }
+
+        .workout-list {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .workout-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #111;
+            padding: 15px 20px 0px 20px;
+            border-bottom: 1px solid #222;
+            cursor: pointer;
+            transition: 0.3s;
+            color: white;
+        }
+
+        .workout-item:hover {
+            background: #222;
+        }
+
+        .number {
+            font-size: 18px;
+            font-weight: bold;
+            opacity: 0.6;
+        }
+
+        .details {
+            align-items: start;
+        }
+
+        .details h3 {
+            font-size: 2rem;
+            text-align: center;
+            margin: 0;
+        }
+
+        .details p {
+            font-size: 14px;
+            opacity: 0.6;
+            flex: start;
+        }
+
+        .arrow {
+            font-size: 20px;
+            opacity: 0.8;
+        }
+
+        .footer {
+            background: #000;
+            color: white;
+            padding: 40px 0;
+        }
+
+        .footer-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            opacity: 0.8;
+            max-width: 300px;
+        }
+
+        .footer-link {
+            font-size: 14px;
+            opacity: 0.9;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .footer-link:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+            }
+
+            .nav-item {
+                margin-bottom: 10px;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-text {
+                text-align: center;
+                margin: 20px auto;
+            }
+
+            .workout-item {
+                flex-direction: row;
+                padding: 12px 16px;
+            }
+
+            .number {
+                font-size: 16px;
+            }
+
+            .details h3 {
+                font-size: 16px;
+            }
+
+            .details p {
+                font-size: 12px;
+            }
+
+            .arrow {
+                font-size: 18px;
+            }
+
+            .footer {
+                text-align: center;
+            }
+
+            .footer-text {
+                max-width: 100%;
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-white" href="#">WORKOUT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">EXERCISES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">TRAINERS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">PRICING</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">LOGIN</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="sec_1">
+
+        <div class="container content">
+
+
+            <div id="gym" class="d-flex ">
+                <div class="col-md-6 mt-5">
+                    <div class="new">
+                        <span class="badge badge-custom">NEW</span>
+                        <span>High Intensity workout to burn calories</span>
+                    </div>
+                    <h1 class="cardio-title mt-3">Cardio <br> Exercise</h1>
+                    <p class="text-white-50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>Lorem ipsum
+                        dolor sit amet, consectetur adipiscing elit.</p>
+                    <button class="btn btn-custom btn-green text-white me-2 mt-5">Get Started</button>
+                    <button class="btn btn-custom bg-dark  mt-5">Preview</button>
+                </div>
+                <div class="col-md-6 text-end mt-5">
+                    <div class="d-inline-block bg-dark info-box text-white mt-5 w-25 me-2">
+                        <span class="yellow">38:14</span>
+                        <small>TIME</small>
+                    </div>
+
+                    <br />
+
+                    <div class="d-inline-block bg-dark info-box w-25 mt-4 text-white">
+                        <span class="text-danger">165</span>
+                        <small>EST CALORIES</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec_2">
+
+        <div class="text-white">
+            <div class="d-flex justify-content-between">
+                <h2 class="fw-bold">Popular Exercises</h2>
+                <button class="bg-dark text-white">SEE MORE EXERCISES</button>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4 mb-4">
+                    <div class="exercise-card">
+                        <img src="./assets/trademill.png" alt="Treadmill">
+                        <div class="exercise-info">Treadmill 58:24<br><small>250 est calories</small></div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="exercise-card">
+                        <img src="./assets/strecthing.png" alt="Stretching">
+                        <div class="exercise-info">Stretching 58:24<br><small>250 est calories</small></div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="exercise-card">
+                        <img src="./assets/yoga.png" alt="Yoga">
+                        <div class="exercise-info">Yoga 58:24<br><small>250 est calories</small></div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="exercise-card h-100">
+                        <img src="./assets/running.png" alt="Running">
+                        <div class="exercise-info">Running 58:24<br><small>250 est calories</small></div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="exercise-card">
+                        <img src="./assets/lifting.png" alt="Lifting">
+                        <div class="exercise-info">Lifting 58:24<br><small>250 est calories</small></div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="exercise-card">
+                        <img src="./assets/pushups.png" alt="PushUp">
+                        <div class="exercise-info">PushUp 58:24<br><small>250 est calories</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="hero-content">
+                        <h1>Workout Program Made For You
+                            <span class="highlight"></span>
+                        </h1>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <p class="hero-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua consectetur adipiscing.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua consectetur adipiscing.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua consectetur adipiscing.
+                    </p>
+                    <a href="#" class="btn-custom">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="trainer-section">
+        <div class="container-fluid">
+            <div class="row g-0">
+
+                <div class="col-md-4">
+                    <div class="trainer-card">
+                        <img src="./assets/wiliam.png" alt="Samantha William">
+                        <div class="trainer-info">
+                            <p class="trainer-name">Samantha William</p>
+                            <p class="trainer-role">Trainer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="trainer-card">
+                        <img src="./assets/summer.png" alt="Karen Summer">
+                        <div class="trainer-info">
+                            <p class="trainer-name">Karen Summer</p>
+                            <p class="trainer-role">Trainer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="trainer-card">
+                        <img src="./assets/wise.png" alt="Jonathan Wise">
+                        <div class="trainer-info">
+                            <p class="trainer-name">Jonathan Wise</p>
+                            <p class="trainer-role">Trainer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="sec_5">
+        <div class="workout-list">
+            <div class="workout-item">
+                <span class="number">01</span>
+                <div class="details">
+                    <h3>Workout at Home</h3>
+                    <p>15 videos</p>
+                </div>
+                <span class="arrow">→</span>
+            </div>
+
+            <div class="workout-item">
+                <span class="number">02</span>
+                <div class="details">
+                    <h3>Stay Strong and Fit</h3>
+                    <p>48 videos</p>
+                </div>
+                <span class="arrow">→</span>
+            </div>
+
+            <div class="workout-item">
+                <span class="number">03</span>
+                <div class="details">
+                    <h3>High Intensity Work</h3>
+                    <p>25 videos</p>
+                </div>
+                <span class="arrow">→</span>
+            </div>
+
+            <div class="workout-item">
+                <span class="number">04</span>
+                <div class="details">
+                    <h3>Simple Workout Fit</h3>
+                    <p>35 videos</p>
+                </div>
+                <span class="arrow">→</span>
+            </div>
+
+            <div class="workout-item">
+                <span class="number">05</span>
+                <div class="details">
+                    <h3>Burn Calories workout</h3>
+                    <p>35 videos</p>
+                </div>
+                <span class="arrow">→</span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4">
+                    <h3 class="footer-title">WORKOUT</h3>
+                    <p class="footer-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua consectetur adipiscing. Do eiusmod tempor incididunt ut.
+                    </p>
+                </div>
+
+
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p class="footer-link">BUSINESS</p>
+                            <p class="footer-link">PARTNERSHIP</p>
+                            <p class="footer-link">CAREER</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="footer-link">BLOGS</p>
+                            <p class="footer-link">SECURITY</p>
+                            <p class="footer-link">SECURITY</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="footer-link">CONTACT US</p>
+                            <p class="footer-link">PRIVACY POLICY</p>
+                            <p class="footer-link">TERMS AND CONDITIONS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
